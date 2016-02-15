@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Video</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="app-wrapper col-md-12">
+
+            <div class="app-sidebar col-md-2">
+
+                <div class="app-sidebar-nav">
+                    <a href="/movies" class="active" pushstate-link data-tabs="video-tabs">
+                       Baza filmów
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="app-main col-md-10">
+                <div class="app-main-tabs active" id="video-tabs">
+                    <a href="/" class="active" pushstate-link>
+                      Filmy
+                    </a>
+                    <a href="/actors" pushstate-link>
+                       Aktorzy
+                    </a>
+                    <a href="/categories" pushstate-link>
+                        Kategorie
+                    </a>
+                </div>
+
+                <div class="app-content-wrapper">
+                    <div class="app-content"></div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.app-wrapper -->
+
+    </div>
+
+    <script id="movieListItemTemplate" type="text/template">
+        <span class="title"><%= title %></span>
+    </script>
+
+    <script id="actorListItemTemplate" type="text/template">
+        <span class="title"><%= name %></span>
+    </script>
+
+    <script id="categoryListItemTemplate" type="text/template">
+        <span class="title"><%= name %></span>
+    </script>
+
+    <script id="clientListItemTemplate" type="text/template">
+        <span class="title"><%= name %></span>
+    </script>
+
+    <script src="js/libs/jquery.js"></script>
+    <script src="js/libs/underscore.js"></script>
+    <script src="js/libs/backbone.js"></script>
+    <script src="js/libs/pushstate-links.js"></script>
+
+    <script src="js/Setup.js"></script>
+
+    <script src="js/Views/Navigation.js"></script>
+
+    <script src="js/Models/MovieModel.js"></script>
+    <script src="js/Collections/MoviesListCollection.js"></script>
+    <script src="js/Views/MovieListItemView.js"></script>
+    <script src="js/Views/MoviesListView.js"></script>
+
+    <script src="js/Models/ActorModel.js"></script>
+    <script src="js/Collections/ActorsListCollection.js"></script>
+    <script src="js/Views/ActorListItemView.js"></script>
+    <script src="js/Views/ActorsListView.js"></script>
+
+    <script src="js/Models/CategoryModel.js"></script>
+    <script src="js/Collections/CategoriesListCollection.js"></script>
+    <script src="js/Views/CategoryListItemView.js"></script>
+    <script src="js/Views/CategoriesListView.js"></script>
+
+    <script src="js/Models/ClientModel.js"></script>
+    <script src="js/Collections/ClientsListCollection.js"></script>
+    <script src="js/Views/ClientListItemView.js"></script>
+    <script src="js/Views/ClientsListView.js"></script>
+
+
+    <script src="js/Routers/Router.js"></script>
+
+    <script src="js/App.js"></script>
+</body>
+
+</html>

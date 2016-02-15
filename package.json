@@ -1,0 +1,14 @@
+{
+  "name": "01",
+  "version": "0.0.0",
+  "description": "",
+  "main": "",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mongodb": "^2.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "author": "",
+  "license": "BSD-2-Clause"
+}
