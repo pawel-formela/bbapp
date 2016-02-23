@@ -7,16 +7,17 @@
             "movies": "showMoviesList",
             "actors": "showActorsList",
             "categories": "showCategoriesList",
-            "clients": "showClientsList"
+            "clients": "showClientsList",
+            "movie/:id": "showMovieDetails"
 
         },
 
         showMoviesList: function () {
 
             var movies = new APP.Collections.MoviesList(),
-                view = new APP.Views.MoviesList({
-                    collection: movies
-                });
+            view = new APP.Views.MoviesList({
+                collection: movies
+            });
 
             APP.showMainView(view);
 
@@ -31,9 +32,9 @@
         showActorsList: function () {
 
             var actors = new APP.Collections.ActorsList(),
-                view = new APP.Views.ActorsList({
-                    collection: actors
-                });
+            view = new APP.Views.ActorsList({
+                collection: actors
+            });
 
             APP.showMainView(view);
 
@@ -48,9 +49,9 @@
         showCategoriesList: function () {
 
             var categories = new APP.Collections.CategoriesList(),
-                view = new APP.Views.CategoriesList({
-                    collection: categories
-                });
+            view = new APP.Views.CategoriesList({
+                collection: categories
+            });
 
             APP.showMainView(view);
 
@@ -64,9 +65,9 @@
         showClientsList: function () {
 
             var clients = new APP.Collections.ClientsList(),
-                view = new APP.Views.ClientsList({
-                    collection: clients
-                });
+            view = new APP.Views.ClientsList({
+                collection: clients
+            });
 
             APP.showMainView(view);
 
@@ -76,7 +77,20 @@
             })
             
             APP.Views.Navigation.highlight('clients');
-        }
+        },
+
+        showMovieDetails: function(id) {
+
+            var movie = new APP.Models.Movie({_id: id}),
+            view = new APP.Views.MovieDetails({model: movie});
+
+            APP.showMainView(view);
+
+            movie.fetch();
+
+            APP.Views.Navigation.highlight("movies");
+
+        },
 
 
     })

@@ -3,65 +3,184 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Video</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="app-wrapper col-md-12">
 
-        <div class="app-wrapper col-md-12">
+        <div class="app-sidebar col-md-2">
 
-            <div class="app-sidebar col-md-2">
+            <div class="app-logo">
+                <img src="images/logo.png" alt="">
+            </div>
 
-                <div class="app-sidebar-nav">
-                    <a href="/movies" class="active" pushstate-link data-tabs="video-tabs">
-                       Baza filmów
-                    </a>
+            <div class="app-sidebar-sep">
+                <i class="fa fa-ellipsis-h"></i>
+            </div>
+
+            <div class="app-sidebar-nav">
+                <a href="/movies" class="active" pushstate-link data-tabs="video-tabs">
+                    <i class="fa fa-play-circle-o"></i> Baza filmów
+                </a>
+
+                <div class="app-sidebar-sep">
+                    <i class="fa fa-ellipsis-h"></i>
+                </div>
+
+                <a href="/rents" pushstate-link data-tabs="rental-tabs">
+                    <i class="fa fa-calendar"></i> Wypożyczalnia
+                </a>
+            </div>
+
+        </div>
+
+        <div class="app-main">
+
+            <div class="app-header">
+
+                <div class="app-breadcrumbs">
+                    <span class="app-status-item">Kokpit</span>
+                    <span class="app-status-item">Filmy</span>
+                </div>
+
+                <div class="app-status">
+                    <span class="app-status-item"><i class="fa fa-film"></i> Filmów <strong>50</strong></span>
+                    <span class="app-status-item"><i class="fa fa-thumbs-o-up"></i> Wypożyczeń <strong>12</strong></span>
+                    <span class="app-status-item"><i class="fa fa-user"></i> Klientów <strong>6</strong></span>
                 </div>
 
             </div>
+            
+            <div class="app-main-tabs active nav nav-tabs" id="video-tabs">
+                <a href="/movies" class="active" pushstate-link>
+                    <i class="fa fa-film"></i> Filmy
+                </a>
+                <a href="/actors" pushstate-link>
+                    <i class="fa fa-users"></i> Aktorzy
+                </a>
+                <a href="/categories" pushstate-link>
+                    <i class="fa fa-list-ol"></i> Kategorie
+                </a>
+            </div>
 
-            <div class="app-main col-md-10">
-                <div class="app-main-tabs active" id="video-tabs">
-                    <a href="/" class="active" pushstate-link>
-                      Filmy
-                    </a>
-                    <a href="/actors" pushstate-link>
-                       Aktorzy
-                    </a>
-                    <a href="/categories" pushstate-link>
-                        Kategorie
-                    </a>
+            <div class="app-main-tabs" id="rental-tabs">
+                <a href="/rents" pushstate-link>
+                    <i class="fa fa-thumbs-o-up"></i> Wypożyczenia
+                </a>
+                <a href="/clients" pushstate-link>
+                    <i class="fa fa-user"></i> Klienci
+                </a>
+            </div>
+
+            <div class="app-content-wrapper">
+
+                <div class="app-content">
+                    <div class="app-actions">
+                        <div class="app-search">
+                            <input type="text" placeholder="Szukaj filmów...">
+                        </div>
+
+                        <span class="btn-rounded active add" onclick="">
+                            <i class="fa fa-plus"></i>
+                        </span>
+
+                        <ul class="app-sort">
+                            <li>Rosnąco</li>
+                            <li>Malejąco</li>
+                        </ul>
+                    </div>
+
                 </div>
 
-                <div class="app-content-wrapper">
-                    <div class="app-content"></div>
+                <div class="app-content-sidebar">
+                    <h3>
+                        <i class="fa fa-thumbs-o-up"></i>
+                        Ostatnie wypożyczenia
+                    </h3>
+
+                    <ul class="app-latest-rents">
+                        <li>
+                            <span class="client">Maciej Nowak</span>
+                            <span class="movie">Przeminęło z wiatrem 2</span>
+                            <span class="date">34 minuty temu</span>
+                        </li>
+                        <li>
+                            <span class="client">Jan Kowalski</span>
+                            <span class="movie">Przeminęło z wiatrem 3</span>
+                            <span class="date">godzinę temu</span>
+                        </li>
+                        <li>
+                            <span class="client">Alicja Kowalczyk</span>
+                            <span class="movie">Przeminęło z wiatrem</span>
+                            <span class="date">Wczoraj, 10:20</span>
+                        </li>
+                    </ul>
                 </div>
 
             </div>
 
         </div>
-        <!-- /.app-wrapper -->
 
     </div>
+    <!-- /.app-wrapper -->
 
     <script id="movieListItemTemplate" type="text/template">
+
         <span class="title"><%= title %></span>
+        <span class="btn-rounded details">
+            <i class="fa fa-search"></i>
+        </span>
+
     </script>
 
     <script id="actorListItemTemplate" type="text/template">
+
         <span class="title"><%= name %></span>
+        <span class="btn-rounded details">
+            <i class="fa fa-search"></i>
+        </span>
+
     </script>
 
     <script id="categoryListItemTemplate" type="text/template">
+
         <span class="title"><%= name %></span>
+        <span class="btn-rounded details">
+            <i class="fa fa-search"></i>
+        </span>
+
     </script>
 
+
     <script id="clientListItemTemplate" type="text/template">
+
         <span class="title"><%= name %></span>
+        <span class="btn-rounded details">
+            <i class="fa fa-search"></i>
+        </span>
+
+    </script>
+
+
+    <script id="movieDetailsTemplate" type="text/template">
+        <h3 class="app-heading"><i class="fa fa-info"></i> Szczegóły filmu</h3>
+
+        <div class="app-item-info">
+            <p><span>Tytuł:</span> <%= title %></p>
+            <p><span>Data wydania:</span> <%= date %></p>
+            <p><span>Kategorie:</span> <%= categories.join(", ") %></p>
+            <p><span>Aktorzy:</span> <%= actors.join(", ") %></p>
+            <p><span>Opis:</span> <i><%= description %></i></p>
+            <p><span>Ilość płyt:</span> <%= quantity %></p>
+            <p><span>Wypożyczonych:</span>5</p>
+            <p><span>Dostępny:</span> tak</p>
+
+            <button type="button" class="btn edit">Edytuj</button>
+        </div>
     </script>
 
     <script src="js/libs/jquery.js"></script>
@@ -93,8 +212,11 @@
     <script src="js/Views/ClientListItemView.js"></script>
     <script src="js/Views/ClientsListView.js"></script>
 
+    <script src="js/Views/MovieDetailsView.js"></script>
+
 
     <script src="js/Routers/Router.js"></script>
+
 
     <script src="js/App.js"></script>
 </body>

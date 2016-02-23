@@ -16,8 +16,17 @@
 
             return this;
 
-        }
+        },
+        
+        events: {
+            "click .details": "redirectToDetails"
+        },
 
+        redirectToDetails: function() {
+
+            APP.router.navigate("/movie/" + this.model.get("_id"), {trigger: true});
+
+        }
 
 
     });
