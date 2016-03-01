@@ -54,7 +54,7 @@
                 </div>
 
             </div>
-            
+
             <div class="app-main-tabs active nav nav-tabs" id="video-tabs">
                 <a href="/movies" class="active" pushstate-link>
                     <i class="fa fa-film"></i> Filmy
@@ -79,20 +79,7 @@
             <div class="app-content-wrapper">
 
                 <div class="app-content">
-                    <div class="app-actions">
-                        <div class="app-search">
-                            <input type="text" placeholder="Szukaj filmów...">
-                        </div>
-
-                        <span class="btn-rounded active add" onclick="">
-                            <i class="fa fa-plus"></i>
-                        </span>
-
-                        <ul class="app-sort">
-                            <li>Rosnąco</li>
-                            <li>Malejąco</li>
-                        </ul>
-                    </div>
+               
 
                 </div>
 
@@ -158,7 +145,7 @@
 
     <script id="clientListItemTemplate" type="text/template">
 
-        <span class="title"><%= name %></span>
+        <span class="title"><%= first_name %></span>
         <span class="btn-rounded details">
             <i class="fa fa-search"></i>
         </span>
@@ -170,12 +157,22 @@
         <h3 class="app-heading"><i class="fa fa-info"></i> Szczegóły filmu</h3>
 
         <div class="app-item-info">
-            <p><span>Tytuł:</span> <%= title %></p>
-            <p><span>Data wydania:</span> <%= date %></p>
-            <p><span>Kategorie:</span> <%= categories.join(", ") %></p>
-            <p><span>Aktorzy:</span> <%= actors.join(", ") %></p>
+            <p><span>Tytuł:</span>
+                <%= title %>
+            </p>
+            <p><span>Data wydania:</span>
+                <%= date %>
+            </p>
+            <p><span>Kategorie:</span>
+                <%= categories.join(", ") %>
+            </p>
+            <p><span>Aktorzy:</span>
+                <%= actors.join(", ") %>
+            </p>
             <p><span>Opis:</span> <i><%= description %></i></p>
-            <p><span>Ilość płyt:</span> <%= quantity %></p>
+            <p><span>Ilość płyt:</span>
+                <%= quantity %>
+            </p>
             <p><span>Wypożyczonych:</span>5</p>
             <p><span>Dostępny:</span> tak</p>
 
@@ -183,10 +180,111 @@
         </div>
     </script>
 
+    <script id="actorDetailsTemplate" type="text/template">
+        <h3 class="app-heading"><i class="fa fa-info"></i> Actor</h3>
+
+        <div class="app-item-info">
+            <p><span>Name:</span>
+                <%= name %>
+            </p>
+
+
+            <button type="button" class="btn edit">Edytuj</button>
+        </div>
+    </script>
+
+    <script id="clientDetailsTemplate" type="text/template">
+        <h3 class="app-heading"><i class="fa fa-info"></i> Dane klienta</h3>
+
+        <div class="app-item-info">
+            <p><span>Imię i nazwisko:</span>
+                <%= first_name %>
+                    <%= last_name %>
+            </p>
+            <p><span>Data urodzenia::</span>
+                <%= birthdate %>
+            </p>
+            <p><span>Numer dowodu:</span>
+                <%= idc_number %>
+            </p>
+            <p><span>Adres:</span>
+                <%= address %>
+            </p>
+            <p><span>Kod pocztowy:</span>
+                <%= zip_code %>
+            </p>
+            <p><span>Miejscowość: </span>
+                <%= city %>
+            </p>
+
+            <button type="button" class="btn edit">Edytuj</button>
+        </div>
+    </script>
+
+
+    <script id="clientDetailsTemplate" type="text/template">
+        <h3 class="app-heading"><i class="fa fa-info"></i> Klient</h3>
+
+        <div class="app-item-info">
+            <p><span>Name:</span>
+                <%= first_name %>
+            </p>
+
+
+            <button type="button" class="btn edit">Edytuj</button>
+        </div>
+    </script>
+
+    <script id="movieEditNewTemplate" type="text/template">
+        <h3 class="app-heading"><i class="fa fa-edit"></i> Edycja filmu</h3>
+
+        <div class="app-form">
+            <form action="" id="new-movie">
+                <div class="app-form-field">
+                    <label for="movie-title">Tytuł</label>
+                    <input type="text" id="movie-title">
+                </div>
+
+                <div class="app-form-field">
+                    <label for="movie-date">Data</label>
+                    <input type="text" id="movie-date" class="short" placeholder="dd-mm-rrrr">
+                </div>
+
+                <div class="app-form-field">
+                    <label for="movie-categories">Kategorie</label>
+                    <input type="text" class="medium" id="movie-categories" placeholder="Wybierz kategorie">
+                </div>
+
+                <div class="app-form-field">
+                    <label for="movie-actors">Aktorzy</label>
+                    <input type="text" class="medium" id="movie-actors" placeholder="Wybierz aktorów">
+                </div>
+
+                <div class="app-form-field">
+                    <label for="movie-description">Opis</label>
+                    <textarea id="movie-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+                        it to make a type specimen book. It has survived not only five centuries.</textarea>
+                </div>
+
+                <div class="app-form-field">
+                    <label for="movie-quantity">Ilość</label>
+                    <input type="text" id="movie-quantity" class="short" placeholder="20">
+                </div>
+
+                <div class="app-form-submit">
+                    <button type="submit" class="btn">Zapisz</button>
+                    <button type="button" class="btn special delete">Usuń</button>
+                </div>
+            </form>
+        </div>
+    </script>
     <script src="js/libs/jquery.js"></script>
     <script src="js/libs/underscore.js"></script>
     <script src="js/libs/backbone.js"></script>
+    <script src="js/libs/backbone.stickit.js"></script>
     <script src="js/libs/pushstate-links.js"></script>
+
 
     <script src="js/Setup.js"></script>
 
@@ -213,6 +311,11 @@
     <script src="js/Views/ClientsListView.js"></script>
 
     <script src="js/Views/MovieDetailsView.js"></script>
+    <script src="js/Views/ActorDetailsView.js"></script>
+    <script src="js/Views/CategoryDetailsView.js"></script>
+    <script src="js/Views/ClientDetailsView.js"></script>
+
+    <script src="js/Views/MovieEditView.js"></script>
 
 
     <script src="js/Routers/Router.js"></script>

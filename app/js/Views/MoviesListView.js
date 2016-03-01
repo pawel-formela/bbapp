@@ -14,7 +14,6 @@
         render: function () {
 
 
-
             this.collection.each(this.addOne, this);
 
             APP.Regions.appContent.append(this.el);

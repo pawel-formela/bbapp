@@ -16,6 +16,15 @@
 
             return this;
 
+        },
+        events: {
+            "click .details": "redirectToDetails"
+        },
+
+        redirectToDetails: function () {
+
+            APP.router.navigate("/actor/" + this.model.get("_id"), { trigger: true });
+
         }
 
 
