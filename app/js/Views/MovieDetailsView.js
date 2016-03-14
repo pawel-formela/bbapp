@@ -21,10 +21,12 @@
             APP.Regions.appContent.html(this.el);
 
         },
+        
         events: {
             "click .edit": "showEdit"
 
         },
+        
         showEdit: function () {
 
             APP.router.navigate("/movie/" + this.model.get("_id") + "/edit", { trigger: true });

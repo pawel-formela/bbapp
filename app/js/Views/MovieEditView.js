@@ -34,7 +34,7 @@
         },
         updateMovie: function (e) { 
             e.preventDefault();
-            this.model.save({wait:true});
+             this.model.save({},{wait:true});
         }
 
 

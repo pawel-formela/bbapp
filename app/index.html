@@ -15,7 +15,7 @@
         <div class="app-sidebar col-md-2">
 
             <div class="app-logo">
-                <img src="images/logo.png" alt="">
+                <a href="/"><img src="images/logo.png" alt=""></a>
             </div>
 
             <div class="app-sidebar-sep">
@@ -79,7 +79,7 @@
             <div class="app-content-wrapper">
 
                 <div class="app-content">
-               
+
 
                 </div>
 
@@ -236,49 +236,76 @@
     </script>
 
     <script id="movieEditNewTemplate" type="text/template">
-        <h3 class="app-heading"><i class="fa fa-edit"></i> Edycja filmu</h3>
+        <% if(this.model.isNew()){ %>
+            <h3 class="app-heading"><i class="fa fa-plus"></i> Nowy Film</h3>
+            <% }else{ %>
+                <h3 class="app-heading"><i class="fa fa-edit"></i> Edycja filmu</h3>
+                <%  } %>
+                    <div class="app-form">
+                        <form action="" id="new-movie">
+                            <div class="app-form-field">
+                                <label for="movie-title">Tytuł</label>
+                                <input type="text" id="movie-title">
+                            </div>
+
+                            <div class="app-form-field">
+                                <label for="movie-date">Data</label>
+                                <input type="text" id="movie-date" class="short" placeholder="dd-mm-rrrr">
+                            </div>
+
+                            <div class="app-form-field">
+                                <label for="movie-categories">Kategorie</label>
+                                <input type="text" class="medium" id="movie-categories" placeholder="Wybierz kategorie">
+                            </div>
+
+                            <div class="app-form-field">
+                                <label for="movie-actors">Aktorzy</label>
+                                <input type="text" class="medium" id="movie-actors" placeholder="Wybierz aktorów">
+                            </div>
+
+                            <div class="app-form-field">
+                                <label for="movie-description">Opis</label>
+                                <textarea id="movie-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                                    been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                                    took a galley of type and scrambled it to make a type specimen book. It has survived
+                                    not only five centuries.</textarea>
+                            </div>
+
+                            <div class="app-form-field">
+                                <label for="movie-quantity">Ilość</label>
+                                <input type="text" id="movie-quantity" class="short" placeholder="20">
+                            </div>
+
+                            <div class="app-form-submit">
+                                <button type="submit" class="btn">Zapisz</button>
+                                <% if(!this.model.isNew()){ %>
+                                    <button type="button" class="btn special delete">Usuń</button>
+                                    <% }%>
+                            </div>
+                        </form>
+                    </div>
+    </script>
+
+    <script id="actorEditNewTemplate" type="text/template">
+
+        <h3 class="app-heading"><i class="fa fa-edit"></i> Edycja aktora</h3>
+
 
         <div class="app-form">
-            <form action="" id="new-movie">
+            <form action="" id="new-actor">
                 <div class="app-form-field">
-                    <label for="movie-title">Tytuł</label>
-                    <input type="text" id="movie-title">
-                </div>
-
-                <div class="app-form-field">
-                    <label for="movie-date">Data</label>
-                    <input type="text" id="movie-date" class="short" placeholder="dd-mm-rrrr">
-                </div>
-
-                <div class="app-form-field">
-                    <label for="movie-categories">Kategorie</label>
-                    <input type="text" class="medium" id="movie-categories" placeholder="Wybierz kategorie">
-                </div>
-
-                <div class="app-form-field">
-                    <label for="movie-actors">Aktorzy</label>
-                    <input type="text" class="medium" id="movie-actors" placeholder="Wybierz aktorów">
-                </div>
-
-                <div class="app-form-field">
-                    <label for="movie-description">Opis</label>
-                    <textarea id="movie-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
-                        it to make a type specimen book. It has survived not only five centuries.</textarea>
-                </div>
-
-                <div class="app-form-field">
-                    <label for="movie-quantity">Ilość</label>
-                    <input type="text" id="movie-quantity" class="short" placeholder="20">
+                    <label for="actor-name">Imię i nazwisko</label>
+                    <input type="text" id="actor-name">
                 </div>
 
                 <div class="app-form-submit">
                     <button type="submit" class="btn">Zapisz</button>
-                    <button type="button" class="btn special delete">Usuń</button>
+
                 </div>
             </form>
         </div>
     </script>
+
     <script src="js/libs/jquery.js"></script>
     <script src="js/libs/underscore.js"></script>
     <script src="js/libs/backbone.js"></script>
@@ -316,6 +343,9 @@
     <script src="js/Views/ClientDetailsView.js"></script>
 
     <script src="js/Views/MovieEditView.js"></script>
+    <script src="js/Views/ActorEditView.js"></script>
+
+    <script src="js/Views/MovieNewView.js"></script>
 
 
     <script src="js/Routers/Router.js"></script>

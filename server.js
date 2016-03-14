@@ -244,7 +244,47 @@ app.get("/actor/:id", function (req, res) {
     });
 
 });
+app.put("/actor/:id", function (req, res) {
 
+    var id = req.params.id,
+        isValid = mongo.ObjectID.isValid(id);
+
+    if (!isValid) {
+        res.status(500);
+        res.json({ error: true });
+
+        return;
+    }
+
+    MongoClient.connect(dbUrl, function (err, db) {
+
+        if (err) {
+            res.status(500);
+            res.json({ error: true });
+
+            return;
+        }
+        console.log(req.body);
+        delete req.body._id;
+
+        db.collection("actors").findAndModify({ _id: new mongo.ObjectID(id) }, {}, { $set: req.body }, { new: true }, function (err, doc) {
+
+            if (err) {
+                res.status(500);
+                res.json({ error: true });
+
+                return;
+            }
+
+            res.json(doc);
+
+            db.close();
+
+        });
+
+    });
+
+});
 app.get("/category/:id", function (req, res) {
     var id = req.params.id,
         isValid = mongo.ObjectID.isValid(id);
@@ -317,6 +357,36 @@ app.get("/client/:id", function (req, res) {
             res.json(docs[0]);
 
             console.log(docs);
+            db.close();
+
+        });
+
+    });
+
+});
+
+app.post("/movies", function (req, res) {
+
+    MongoClient.connect(dbUrl, function (err, db) {
+
+        if (err) {
+            res.status(500);
+            res.json({ error: true });
+
+            return;
+        }
+
+        db.collection("movies").insert(req.body, function (err, doc) {
+
+            if (err) {
+                res.status(500);
+                res.json({ error: true });
+
+                return;
+            }
+            console.log(doc.ops);
+            res.json(doc.ops[0]);
+
             db.close();
 
         });

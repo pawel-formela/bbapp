@@ -15,6 +15,9 @@
             "client/:id": "showClientDetails",
 
             "movie/:id/edit": "showMovieEdit",
+            "actor/:id/edit": "showActorEdit",
+            
+             "movies/new": "showMovieNew",
         },
 
         showMoviesList: function () {
@@ -146,7 +149,32 @@
 
             APP.Views.Navigation.highlight("movies");
 
-        }
+        },
+        
+        showActorEdit: function (id) {
+
+
+            var actor = new APP.Models.Actor({ _id: id }),
+                view = new APP.Views.ActorEdit({ model: actor });
+
+            APP.showMainView(view);
+
+            actor.fetch();
+
+            APP.Views.Navigation.highlight("actors");
+
+        },
+        
+        
+        showMovieNew: function (id) {
+
+
+            var movie = new APP.Models.Movie(),
+                view = new APP.Views.MovieNew({ model: movie });
+
+            APP.showMainView(view);
+
+        },
 
 
     })
